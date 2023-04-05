@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import { getAllPlants, addPlant, /*updatePlant*/ } from './src/plants.js'
+import { getAllPlants, addPlant, deletePlant, updatePlant } from './src/plants.js'
 
 const PORT = 3050
 const app = express()
@@ -9,7 +9,8 @@ app.use(express.json())
 
 app.get('/plants', getAllPlants)
 app.post('/plants', addPlant)
-// app.patch('/updatePlant', updatePlant)
+app.delete('/plants/:docId', deletePlant)
+app.patch('/plants/:docId', updatePlant)
 
 app.listen(PORT, () => {
     console.log(`Listening on port: http://localhost:${PORT}...`)
